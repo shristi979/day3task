@@ -1,0 +1,18 @@
+
+{
+"material":{
+    "E":200000000000,
+    "I":0.000008
+         },
+         
+"span":[1.0,2.0,3.0],
+"Point_load":[1000,2000,3000],
+"uniformly_distributed_load":[100,200,300],
+"off_center_fraction":0.3,
+"beam_cases":[
+    "ss_center_point",
+    "ss_udl",
+    "ss_off_center_point",
+    "canti_end_point",
+    "canti_udl"
+    ]}
