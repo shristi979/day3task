@@ -14,18 +14,22 @@ from beam import (
 with open("config.json", "r") as file:
     data = json.load(file)
 
-
-E = data["material"]["E"]
-I = data["material"]["I"]
+E = float(data["material"]["E"])
+I = float(data["material"]["I"])
 
 spans = data["span"]
 point_loads = data["Point_load"]
 uniform_loads = data["uniformly_distributed_load"]
 
-off_center_fraction = data["off_center_fraction"]
+off_center_fraction = float(data["off_center_fraction"])
 
 beam_cases = data["beam_cases"]
 
+# Input validation(DID THIS FOR BUG FIX- when inappropiate off center fraction and point load)
+if not 0 < off_center_fraction < 1:
+    raise ValueError("off_center_fraction must be between 0 and 1")
+if not spans or not point_loads or not uniform_loads:
+    raise ValueError("span and load lists in config.json must not be empty")
 
 functions = {
     "ss_center_point": ss_center_point,
